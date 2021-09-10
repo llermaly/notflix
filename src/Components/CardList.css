@@ -1,0 +1,32 @@
+.results_list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.result > img {
+  padding: 15px 15px 0 0;
+  width: 220px;
+  height: auto;
+}
+
+.result_data {
+  padding: 5px;
+  min-width: 220px;
+  max-width: 220px;
+}
+
+.result_data > h2 > a {
+  text-decoration: none;
+  color: black;
+}
+
+.result_data > h2 > a:active {
+  text-decoration: none;
+  color: black;
+}
+
+.result_data > h2 > a:hover {
+  text-decoration: underline;
+  color: black;
+}

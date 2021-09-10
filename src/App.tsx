@@ -1,12 +1,9 @@
-import React, {useEffect} from 'react';
-import SearchPage from './Components/SearchPage';
-import Hero from './Components/Hero';
-import logo from './logo.svg';
-import coveologo from './coveologo.svg';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
-import {Grid, Typography, Box} from '@material-ui/core';
-import {initializeHeadlessEngine} from './common/Engine';
-import {SearchEngine} from '@coveo/headless';
+import React, { useEffect } from "react";
+import SearchPage from "./Components/SearchPage";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Grid, Typography, Box } from "@material-ui/core";
+import { initializeHeadlessEngine } from "./common/Engine";
+import { SearchEngine } from "@coveo/headless";
 
 export default function App() {
   return (
@@ -19,11 +16,11 @@ export default function App() {
 const GuardedRoute = () => {
   const isEnvValid = () => {
     const variables = [
-      'REACT_APP_PLATFORM_URL',
-      'REACT_APP_ORGANIZATION_ID',
-      'REACT_APP_API_KEY',
-      'REACT_APP_USER_EMAIL',
-      'REACT_APP_SERVER_PORT',
+      "REACT_APP_PLATFORM_URL",
+      "REACT_APP_ORGANIZATION_ID",
+      "REACT_APP_API_KEY",
+      "REACT_APP_USER_EMAIL",
+      "REACT_APP_SERVER_PORT",
     ];
     const reducer = (previousValue: boolean, currentValue: string) =>
       previousValue && Boolean(process.env[currentValue]);
@@ -46,13 +43,7 @@ const Home = () => {
 
   if (engine) {
     return (
-      <div className="App">
-        <Hero
-          logos={[logo, coveologo]}
-          welcome="Welcome to Your Coveo React.js Search Page"
-        />
-        {engine && <SearchPage engine={engine} />}
-      </div>
+      <div className="App">{engine && <SearchPage engine={engine} />}</div>
     );
   } else {
     return <div>Waiting for engine</div>;

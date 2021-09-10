@@ -1,19 +1,19 @@
-import {FunctionComponent, useEffect, useState, useContext} from 'react';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import { FunctionComponent, useEffect, useState, useContext } from "react";
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 import {
   buildSearchBox,
   SearchBox as HeadlessSearchBox,
   SearchBoxOptions,
-} from '@coveo/headless';
-import EngineContext from '../common/engineContext';
+} from "@coveo/headless";
+import EngineContext from "../common/engineContext";
 
 interface SearchBoxProps {
   controller: HeadlessSearchBox;
 }
 
 const SearchBoxRenderer: FunctionComponent<SearchBoxProps> = (props) => {
-  const {controller} = props;
+  const { controller } = props;
   const [state, setState] = useState(controller.state);
 
   useEffect(
@@ -32,7 +32,7 @@ const SearchBoxRenderer: FunctionComponent<SearchBoxProps> = (props) => {
       }}
       options={state.suggestions.map((suggestion) => suggestion.rawValue)}
       freeSolo
-      style={{width: 'auto'}}
+      style={{ width: "100%" }}
       renderInput={(params) => (
         <TextField
           {...params}
@@ -46,9 +46,9 @@ const SearchBoxRenderer: FunctionComponent<SearchBoxProps> = (props) => {
 };
 
 const SearchBox = () => {
-  const options: SearchBoxOptions = {numberOfSuggestions: 8};
+  const options: SearchBoxOptions = { numberOfSuggestions: 8 };
   const engine = useContext(EngineContext)!;
-  const controller = buildSearchBox(engine, {options});
+  const controller = buildSearchBox(engine, { options });
   return <SearchBoxRenderer controller={controller} />;
 };
 

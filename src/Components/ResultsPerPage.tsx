@@ -1,14 +1,14 @@
-import {FunctionComponent, useEffect, useState, useContext} from 'react';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import Typography from '@material-ui/core/Typography';
+import { FunctionComponent, useEffect, useState, useContext } from "react";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from "@material-ui/core/FormControl";
+import Typography from "@material-ui/core/Typography";
 import {
   buildResultsPerPage,
   ResultsPerPage as HeadlessResultsPerPage,
-} from '@coveo/headless';
-import EngineContext from '../common/engineContext';
+} from "@coveo/headless";
+import EngineContext from "../common/engineContext";
 
 interface ResultsPerPageProps {
   options: number[];
@@ -17,7 +17,7 @@ interface ResultsPerPageProps {
 const ResultsPerPageRenderer: FunctionComponent<ResultsPerPageProps> = (
   props
 ) => {
-  const {controller, options} = props;
+  const { controller, options } = props;
   const [state, setState] = useState(controller.state);
 
   useEffect(
@@ -50,9 +50,9 @@ const ResultsPerPageRenderer: FunctionComponent<ResultsPerPageProps> = (
 
 const ResultsPerPage = () => {
   const engine = useContext(EngineContext)!;
-  const options = [5, 10, 25];
+  const options = [10, 24, 50, 100];
   const controller = buildResultsPerPage(engine, {
-    initialState: {numberOfResults: options[0]},
+    initialState: { numberOfResults: options[1] },
   });
   return <ResultsPerPageRenderer controller={controller} options={options} />;
 };
